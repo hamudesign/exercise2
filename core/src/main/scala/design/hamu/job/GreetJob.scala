@@ -14,8 +14,9 @@ object GreetJob extends Job {
         json.as[GreetInput] // returns Either[Throwable, GreetInput] based on if json can be decoded to GreetInput
       }
       .map { input =>
-        greet(input.name).asJson // creates output and encode into json
+        run(input).asJson // creates output and encode into json
       }
 
-  def greet(name: String): GreetOutput = GreetOutput(s"Greetings ${name}!")
+  def run(input: GreetInput): GreetOutput =
+    GreetOutput(s"Greetings ${input.name}!")
 }
