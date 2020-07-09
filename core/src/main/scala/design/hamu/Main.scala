@@ -17,7 +17,10 @@ object Main {
         case Left(e) => {
           e match {
             case e: FileNotFoundException => println(s"Job ${jobName} failed. No file was found.")
-            case e: NullPointerException => println(s"Job ${jobName} failed with a null pointer exception. File needs to be located in src/main/resources")
+            case e: NullPointerException =>
+              println(
+                s"Job ${jobName} failed with a null pointer exception. File needs to be located in src/main/resources"
+              )
             case e: Exception => println(s"Job ${jobName} failed with error ${e.getMessage}")
           }
         }
