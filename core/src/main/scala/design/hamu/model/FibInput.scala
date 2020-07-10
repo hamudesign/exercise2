@@ -12,5 +12,5 @@ import io.circe.generic.JsonCodec
 @JsonCodec
 case class FibInput(
     input: Int,
-    isEven: String
+    isEven: Boolean
  )

@@ -11,6 +11,6 @@ import io.circe.generic.JsonCodec
   */
 @JsonCodec
 case class FibOutput(
-    output: Array[Int],
+    output: String, //Array[Int],  // Should this be a String?  For easier checking?
     sum: Int
 )
