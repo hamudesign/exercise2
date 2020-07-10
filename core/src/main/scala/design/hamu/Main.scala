@@ -16,7 +16,6 @@ object Main {
         case Right(json) => println(json.spaces2)
         case Left(e) => {
           e match {
-            case e: FileNotFoundException => println(s"Job ${jobName} failed. No file was found.")
             case e: NullPointerException =>
               println(
                 s"Job ${jobName} failed with a null pointer exception. File needs to be located in src/main/resources"

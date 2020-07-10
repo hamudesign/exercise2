@@ -20,19 +20,14 @@ object EncodeJob extends Job {
       }
 
   def run(input: EncodeInput): EncodeOutput = {
-    val (output, uniqueChar) = convertToOutput(input.input)
-    EncodeOutput(output, uniqueChar)
+    EncodeOutput(countContiguousChars(input.input.head, input.input, 0), input.input.distinct.length)
   }
 
-  def convertToOutput(inputArray: String): (String, Int) = {
-    (countContiguousChars(inputArray.head, inputArray, 0), inputArray.distinct.length)
-  }
-
-  def countContiguousChars(char: Char, inputArray: String, count: Int): String = {
-    if (inputArray.isEmpty) s"$char${count.toString}"
+  def countContiguousChars(char: Char, input: String, count: Int): String = {
+    if (input.isEmpty) s"$char${count.toString}"
     else {
-      if (char.equals(inputArray.head)) countContiguousChars(char, inputArray.reverse.dropRight(1).reverse, count + 1)
-      else s"$char${count.toString}${countContiguousChars(inputArray.head, inputArray.reverse.dropRight(1).reverse, 1)}"
+      if (char.equals(input.head)) countContiguousChars(char, input.tail, count + 1)
+      else s"$char${count.toString}${countContiguousChars(input.head, input.tail, 1)}"
     }
   }
 }
