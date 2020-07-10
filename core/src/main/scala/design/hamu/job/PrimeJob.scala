@@ -6,7 +6,6 @@ import io.circe.parser
 import io.circe.syntax._
 
 object PrimeJob extends Job {
-
   def apply(string: String): Either[Throwable, Json] =
     parser
       .parse(string) // returns Either[Throwable, Json] based on if string is valid json
@@ -17,6 +16,13 @@ object PrimeJob extends Job {
         run(input).asJson // creates output and encode into json
       }
 
-  def run(input: PrimeInput): PrimeOutput =
+  def run(inputJson: PrimeInput): PrimeOutput = {
     PrimeOutput("haha", "haha")
+    //def nPrimeNumbers = determinePrimeNumbers(inputJson.input.toInt)
+    //PrimeOutput(nPrimeNumbers.toString, "haha")
+  }
+
+  def determinePrimeNumbers(num: Integer): List[Integer] = {
+    List[Integer](num)
+  }
 }
