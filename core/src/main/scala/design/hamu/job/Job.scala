@@ -11,5 +11,6 @@ object Job {
   def apply(string: String): Job = string.toLowerCase match {
     case "greet" => GreetJob
     case "prime" => PrimeJob
+    case "encode" => EncodeJob
   }
 }
