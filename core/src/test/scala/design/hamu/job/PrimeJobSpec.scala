@@ -16,7 +16,7 @@ class PrimeJobSpec extends AnyWordSpec with Matchers {
     "return correct output given valid input object" in {
       val input = 4
       val size = 3
-      PrimeJob.run(PrimeInput(input,size)) must equal(
+      PrimeJob.run(PrimeInput(input, size)) must equal(
         PrimeOutput("[3,5,7]", 15)
       )
     }
