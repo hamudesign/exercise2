@@ -14,15 +14,17 @@ class PrimeJobSpec extends AnyWordSpec with Matchers {
       PrimeJob("{}") mustBe a[Left[_, _]]
     }
     "return correct output given valid input object" in {
-      val name = "foobar"
-      PrimeJob.run(PrimeInput(name,"")) must equal(
-        PrimeOutput("haha", "haha")
+      val input = 4
+      val size = 3
+      PrimeJob.run(PrimeInput(input,size)) must equal(
+        PrimeOutput("[3,5,7]", 15)
       )
     }
     "return correct output given valid input json" in {
-      val name = "lorem ipsum"
-      PrimeJob(s"""{ "input": "${name}", "size": "${name}" }""") must equal(
-        Right(PrimeOutput("haha", "haha").asJson)
+      val input = 3
+      val size = 2
+      PrimeJob(s"""{ "input": "${input}", "size": "${size}" }""") must equal(
+        Right(PrimeOutput("[3,5]", 8).asJson)
       )
     }
   }

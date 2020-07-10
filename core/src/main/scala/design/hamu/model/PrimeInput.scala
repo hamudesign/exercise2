@@ -12,6 +12,6 @@ import io.circe.generic.JsonCodec
   */
 @JsonCodec
 case class PrimeInput(
-  input: String,
-  size: String
+  input: Int,
+  size: Int
 )
