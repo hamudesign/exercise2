@@ -10,6 +10,6 @@ object Job {
 
   def apply(string: String): Job = string.toLowerCase match {
     case "greet" => GreetJob
-    case "fib" => FibJob
+    case "prime" => PrimeJob
   }
 }
