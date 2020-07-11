@@ -19,8 +19,7 @@ object PrimeJob extends Job {
 
   def run(inputJson: PrimeInput): PrimeOutput = {
     def nPrimeNumbers = determinePrimeNumbers(inputJson.input).takeRight(inputJson.size)
-
-    PrimeOutput(formatResponse(nPrimeNumbers), nPrimeNumbers.reduce(sum))
+    PrimeOutput(nPrimeNumbers.toList, nPrimeNumbers.reduce(sum))
   }
 
   // list is the list of all prime numbers found.
@@ -39,16 +38,6 @@ object PrimeJob extends Job {
     } else { // number isn't divisible by itr
       determinePrimeNumbers(count, list, num, itr + 1) // try the next itr
     }
-  }
-
-  def formatResponse(list: Vector[Int]): String = {
-    "[" + formatResponseRecur(list.toList) + "]"
-  }
-
-  def formatResponseRecur(list: List[Int], str: String = ""): String = list match {
-    case Nil => str
-    case head :: Nil => formatResponseRecur(Nil, str + head)
-    case head :: tail => formatResponseRecur(tail, str + head + ",")
   }
 
   def sum(x: Int, y: Int): Int = { x + y }

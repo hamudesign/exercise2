@@ -7,11 +7,11 @@ import io.circe.generic.JsonCodec
   * Json equivalent is:
   * {
   *   "output": "an array of integers in string form",
-  *   "sum": "an integer in string form"
+  *   "sum": "an integer"
   * }
   */
 @JsonCodec
 case class PrimeOutput(
-  output: String,
+  output: List[Int],
   sum: Int
 )

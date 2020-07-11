@@ -17,14 +17,14 @@ class PrimeJobSpec extends AnyWordSpec with Matchers {
       val input = 4
       val size = 3
       PrimeJob.run(PrimeInput(input, size)) must equal(
-        PrimeOutput("[3,5,7]", 15)
+        PrimeOutput(List(3,5,7), 15)
       )
     }
     "return correct output given valid input json" in {
       val input = 3
       val size = 2
-      PrimeJob(s"""{ "input": "${input}", "size": "${size}" }""") must equal(
-        Right(PrimeOutput("[3,5]", 8).asJson)
+      PrimeJob(s"""{ "input": ${input}, "size": "${size}" }""") must equal(
+        Right(PrimeOutput(List(3,5), 8).asJson)
       )
     }
   }
